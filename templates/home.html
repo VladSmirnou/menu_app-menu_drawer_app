@@ -1,0 +1,26 @@
+{% comment %}
+    {% load menus_drawer_mod %}    
+{% endcomment %}
+
+<body>
+    {% for menu in menus %}            
+        <ul id="{{ menu.menu_name }}_main">
+            <li>
+                <a href="{% url 'menus' menu.menu_name 1 %}">{{ menu.menu_name }}</a>
+            </li>
+            {% if menu.id == menu1_nest1 %}
+                {% include 'partials/menu1_nest.html' %}
+            {% elif menu.id == menu2_nest1 %}
+                {% include 'partials/menu2_nest.html' %}
+            {% elif menu.id == menu3_nest1 %}
+                {% include 'partials/menu3_nest.html' %}
+            {% endif %}
+        </ul>
+    {% endfor %}
+
+    {% comment %}
+        {% draw_menu 'menu name' %} 
+    {% endcomment %}
+    
+    <a href="{% url 'home_page' %}">Close all</a>
+</body>

@@ -1,0 +1,22 @@
+<ul id="{{ menu.menu_name }}_nest1">
+    <li>Dummy text</li>
+    <li>Dummy text</li>
+    <li>Dummy text</li>
+    <li><a href="{% url 'menus' menu.menu_name 2 %}">{{ menu.menunest_set.all.0 }}</a></li>
+    {% if menu3_nest2 %}
+        <ul id="{{ menu.menu_name }}_nest2">
+            <li>Dummy text</li>
+            <li>Dummy text</li>
+            <li>Dummy text</li>
+            <li><a href="{% url 'menus' menu.menu_name 3 %}">{{ menu.menunest_set.all.1 }}</a></li>
+            {% if menu3_nest3 %}
+                <ul id="{{ menu.menu_name }}_nest3">
+                    <li>Dummy text</li>
+                    <li>Dummy text</li>
+                    <li>Dummy text</li>
+                    <li>{{ menu.menunest_set.all.2 }} (and so on)</li>
+                </ul>
+            {% endif %}
+        </ul>
+    {% endif %}
+</ul>
