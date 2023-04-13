@@ -16,6 +16,8 @@
                 {% include 'partials/menu3_nest.html' %}
             {% endif %}
         </ul>
+    {% empty %}
+        <h3>Ho menus</h3>
     {% endfor %}
 
     {% comment %}

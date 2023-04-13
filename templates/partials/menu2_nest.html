@@ -2,19 +2,25 @@
     <li>Dummy text</li>
     <li>Dummy text</li>
     <li>Dummy text</li>
-    <li><a href="{% url 'menus' menu.menu_name 2 %}">{{ menu.menunest_set.all.0 }}</a></li>
+    {% if menu.nest.0 %}
+    <li><a href="{% url 'menus' menu.menu_name 2 %}">{{ menu.nest.0 }}</a></li>
+    {% endif %}
     {% if menu2_nest2 %}
         <ul id="{{ menu.menu_name }}_nest2">
             <li>Dummy text</li>
             <li>Dummy text</li>
             <li>Dummy text</li>
-            <li><a href="{% url 'menus' menu.menu_name 3 %}">{{ menu.menunest_set.all.1 }}</a></li>
+            {% if menu.nest.1 %}
+            <li><a href="{% url 'menus' menu.menu_name 3 %}">{{ menu.nest.1 }}</a></li>
+            {% endif %}
             {% if menu2_nest3 %}
                 <ul id="{{ menu.menu_name }}_nest3">
                     <li>Dummy text</li>
                     <li>Dummy text</li>
                     <li>Dummy text</li>
-                    <li>{{ menu.menunest_set.all.2 }} (and so on)</li>
+                    {% if menu.nest.2 %}
+                    <li>{{ menu.nest.2 }} (and so on)</li>
+                    {% endif %}
                 </ul>
             {% endif %}
         </ul>

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views import View
 
 from .models import Menu
+from .utils import interface
 
 
 class HomePageView(View):
@@ -14,13 +15,16 @@ class HomePageView(View):
 class MenusList(View):
 
     def get(self, request, menu_name, nest_lvl):
-        # Не знаю, как сделать чтобы был только 1 запрос тут
-        menus = Menu.objects.prefetch_related('menunest_set')
+        menu_objects = Menu.objects.raw(
+            'SELECT menus_app_menu.id, menus_app_menu.menu_name, menu_nest \
+                FROM menus_app_menu LEFT OUTER JOIN menus_app_menunest \
+                    ON menus_app_menu.id = menus_app_menunest.menu_id'
+            )
         
         self.menu_number = int(menu_name.rsplit('_')[1])
 
         self.context = {
-            'menus': menus,
+            'menus': interface.align_interface(menu_objects),
         }
 
         for lvl in range(1, nest_lvl + 1):
