@@ -1,7 +1,7 @@
 {% comment %}
-    {% load menus_drawer_mod %}    
+    {% load menus_drawer_mod %}        
 {% endcomment %}
-
+        
 <body>
     {% for menu in menus %}            
         <ul id="{{ menu.menu_name }}_main">
@@ -19,10 +19,10 @@
     {% empty %}
         <h3>Ho menus</h3>
     {% endfor %}
-
+        
     {% comment %}
         {% draw_menu 'menu name' %} 
     {% endcomment %}
-    
-    <a href="{% url 'home_page' %}">Close all</a>
+            
+    <a href="{% url 'home_page' %}">Close all</a> 
 </body>

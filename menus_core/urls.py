@@ -21,5 +21,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('menus_app/', include('menus_app.urls')),
+    path('menus_drawer/', include('menus_drawer.urls')),
     path('__debug__/', include('debug_toolbar.urls')),
 ]
